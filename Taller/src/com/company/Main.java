@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -17,10 +20,10 @@ public class Main {
         vehiculoList.add(new Coche("rojo"));
 
         List<ParteReparacion> parteReparacionsList = new ArrayList<>();
-        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(0)));
-        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(2)));
-        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(4)));
-        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(1)));
+        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(0),Tipo.COCHE));
+        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(2),Tipo.COCHE));
+        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(4),Tipo.MOTO));
+        parteReparacionsList.add(new ParteReparacion(vehiculoList.get(1),Tipo.COCHE));
 
         parteReparacionsList.forEach(parteReparacion -> System.out.println(parteReparacion.toString()));
         double resultado = parteReparacionsList.stream().mapToDouble(ParteReparacion::precioTotalReparacion).sum();
@@ -52,7 +55,22 @@ public class Main {
 
 
 
-}
+        Map<Tipo, Integer> totalAgeByGender =
+               parteReparacionsList
+                        .stream()
+                        .collect(
+                                Collectors.groupingBy(
+                                        ParteReparacion::getTipo,
+                                        Collectors.reducing(
+                                                0,
+                                                ParteReparacion::precioTotalReparacion,
+                                                Integer::sum)));
+
+
+       totalAgeByGender.forEach((k, v) -> System.out.println("vehiculo" + k + "facturado" + v));
+       
+
+    }
   }
 
 

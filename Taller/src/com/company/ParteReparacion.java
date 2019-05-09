@@ -1,11 +1,18 @@
 package com.company;
 
 
-import java.util.List;
-
 public class ParteReparacion {
    private  int PRECIOBASE=30;
    private Vehiculo vehiculo;
+   private Tipo tipo;
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Tipo tipo) {
+        this.tipo = tipo;
+    }
 
     public int getPRECIOBASE() {
         return PRECIOBASE;
@@ -19,7 +26,8 @@ public class ParteReparacion {
         this.vehiculo = vehiculo;
     }
 
-    public ParteReparacion( Vehiculo vehiculo) {
+    public ParteReparacion( Vehiculo vehiculo,Tipo tipo) {
+        this.tipo=tipo;
 
         this.vehiculo = vehiculo;
     }
@@ -32,8 +40,8 @@ public class ParteReparacion {
                 "totalReparacion="+(PRECIOBASE+vehiculo.getPrecioReparacion())+
                 '}';
     }
-    public double precioTotalReparacion(){
-        double result=getPRECIOBASE()+vehiculo.getPrecioReparacion();
+    public int precioTotalReparacion(){
+        int result=getPRECIOBASE()+vehiculo.getPrecioReparacion();
         return result;
     }
 

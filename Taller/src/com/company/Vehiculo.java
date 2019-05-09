@@ -6,7 +6,7 @@ import java.util.List;
 public class Vehiculo {
    private int precioReparacion;
    private String color;
-   private List<Vehiculo>vehiculoList;
+
 
 
 

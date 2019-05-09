@@ -5,6 +5,8 @@ public class Coche extends Vehiculo {
         super(50,color);
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Coche{}";
+    }
 }
