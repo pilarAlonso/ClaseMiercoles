@@ -55,7 +55,7 @@ public class Main {
 
 
 
-        Map<Tipo, Integer> totalAgeByGender =
+        Map<Tipo, Integer> o =
                parteReparacionsList
                         .stream()
                         .collect(
@@ -67,8 +67,8 @@ public class Main {
                                                 Integer::sum)));
 
 
-       totalAgeByGender.forEach((k, v) -> System.out.println("vehiculo" + k + "facturado" + v));
-       
+       o.forEach((k, v) -> System.out.println("vehiculo" + k + "facturado" + v));
+
 
     }
   }
